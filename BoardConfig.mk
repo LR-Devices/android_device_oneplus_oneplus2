@@ -66,9 +66,6 @@ TARGET_KERNEL_SOURCE := kernel/oneplus/msm8994
 TARGET_KERNEL_CONFIG := matrix_defconfig
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 
-# ANT+
-BOARD_ANT_WIRELESS_DEVICE := "qualcomm-uart"
-
 # Audio
 AUDIO_FEATURE_ENABLED_ACDB_LICENSE := true
 AUDIO_FEATURE_ENABLED_COMPRESS_CAPTURE := true
@@ -96,19 +93,17 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(PLATFORM_PATH)/bluetooth
 BOARD_HAVE_BLUETOOTH_QCOM := true
 QCOM_BT_USE_BTNV := true
 
+# Board
+TARGET_BOARD_INFO_FILE ?= $(PLATFORM_PATH)/board-info.txt
+
 # Camera
 TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
-BOARD_QTI_CAMERA_32BIT_ONLY := true
 USE_DEVICE_SPECIFIC_CAMERA := true
 TARGET_PROCESS_SDK_VERSION_OVERRIDE := \
     /system/vendor/bin/mm-qcamera-daemon=22
 
 # Charger
 BOARD_CHARGER_DISABLE_INIT_BLANK := true
-
-# Lineage Hardware
-JAVA_SOURCE_OVERLAYS := org.lineageos.hardware|$(PLATFORM_PATH)/lineagehw|**/*.java
-TARGET_TAP_TO_WAKE_NODE := "/proc/touchpanel/double_tap"
 
 # Filesystem
 TARGET_FS_CONFIG_GEN := $(PLATFORM_PATH)/config.fs
@@ -159,15 +154,19 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 59047394304
 BOARD_FLASH_BLOCK_SIZE := 262144
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
-TARGET_USES_MKE2FS := true
 
 # Power
 TARGET_HAS_NO_WLAN_STATS := true
 TARGET_RPM_SYSTEM_STAT := /d/rpm_stats
+TARGET_TAP_TO_WAKE_NODE := "/proc/touchpanel/double_tap"
 TARGET_USES_INTERACTION_BOOST := true
 
 # QCOM hardware
 BOARD_USES_QCOM_HARDWARE := true
+
+# Releasetools
+TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_oneplus2
+TARGET_RELEASETOOLS_EXTENSIONS := $(PLATFORM_PATH)
 
 # SELinux
 include device/qcom/sepolicy-legacy/sepolicy.mk
