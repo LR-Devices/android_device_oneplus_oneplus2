@@ -22,7 +22,9 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_l_mr1.mk
 $(call inherit-product, device/oneplus/oneplus2/device.mk)
 
 # Inherit some common Lineage stuff.
-$(call inherit-product, vendor/lineage/liquid/common_full_phone.mk)
+$(call inherit-product, vendor/liquid/config/common_full_phone.mk)
+
+export LIQUID_BUILDTYPE=RELEASE
 
 PRODUCT_NAME := liquid_oneplus2
 PRODUCT_DEVICE := oneplus2
